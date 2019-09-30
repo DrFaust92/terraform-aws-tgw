@@ -46,6 +46,7 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "tgw-att-vpc-1" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
+| allow\_external\_principals | Should be true to enable Allow External Principals | string | `"false"` | no |
 | amazon\_side\_asn | The Autonomous System Number (ASN) for the Amazon side of the gateway. By default the TGW is created with the current default Amazon ASN. | string | `"64512"` | no |
 | auto\_accept\_attachments | Whether resource attachment requests are automatically accepted | string | `"false"` | no |
 | create\_tgw | Controls if TGW should be created (it affects almost all resources) | string | `"true"` | no |
@@ -53,6 +54,9 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "tgw-att-vpc-1" {
 | enable\_default\_route\_table\_propagation | Whether resource attachments automatically propagate routes to the default propagation route table | string | `"true"` | no |
 | enable\_dns\_support | Should be true to enable DNS support in the TGW | string | `"true"` | no |
 | name | Name to be used on all the resources as identifier | string | `""` | no |
+| ram\_share\_principals | A list of principals to share TGW with. Possible values are an AWS account ID, an AWS Organizations Organization ARN, or an AWS Organizations Organization Unit ARN | list | `[]` | no |
+| ram\_tags | Additional tags for the RAM | map | `{}` | no |
+| share\_tgw | Whether to share your transit gateway with other accounts | string | `"true"` | no |
 | tags | A map of tags to add to all resources | map | `{}` | no |
 | tgw\_route\_table\_tags | Additional tags for the TGW route table | map | `{}` | no |
 | tgw\_tags | Additional tags for the TGW | map | `{}` | no |
@@ -61,6 +65,10 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "tgw-att-vpc-1" {
 
 | Name | Description |
 |------|-------------|
+| ram\_principal\_association | List of IDs of the RAM Principal Association |
+| ram\_resource\_association | The ID of the RAM Resource Association |
+| ram\_share\_arn | The ARN of the RAM Share |
+| ram\_share\_id | The ID of the RAM Share |
 | tgw\_arn | The ARN of the TGW |
 | tgw\_id | The ID of the TGW |
 | tgw\_route\_table\_id | The ID of the TGW route table |

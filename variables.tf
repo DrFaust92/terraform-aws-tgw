@@ -28,6 +28,11 @@ variable "tgw_route_table_tags" {
   default     = {}
 }
 
+variable "share_tgw" {
+  description = "Whether to share your transit gateway with other accounts"
+  default     = true
+}
+
 variable "auto_accept_attachments" {
   description = "Whether resource attachment requests are automatically accepted"
   default     = false
@@ -38,6 +43,16 @@ variable "amazon_side_asn" {
   default     = "64512"
 }
 
+variable "allow_external_principals" {
+  description = "Should be true to enable Allow External Principals"
+  default     = false
+}
+
+variable "ram_share_principals" {
+  description = "A list of principals to share TGW with. Possible values are an AWS account ID, an AWS Organizations Organization ARN, or an AWS Organizations Organization Unit ARN"
+  default     = []
+}
+
 variable "tags" {
   description = "A map of tags to add to all resources"
   default     = {}
@@ -45,5 +60,10 @@ variable "tags" {
 
 variable "tgw_tags" {
   description = "Additional tags for the TGW"
+  default     = {}
+}
+
+variable "ram_tags" {
+  description = "Additional tags for the RAM"
   default     = {}
 }
