@@ -2,6 +2,8 @@
 
 Terraform module which creates Transit Gateway resources on AWS.
 
+## Usage
+
 ```hcl
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
