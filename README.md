@@ -32,7 +32,7 @@ module "tgw" {
   }
 }
 
-resource "aws_ec2_transit_gateway_vpc_attachment" "tgw-att-vpc-1" {
+resource "aws_ec2_transit_gateway_vpc_attachment" "tgw-vpc-att" {
   subnet_ids         = "${module.vpc.private_subnets}"
   transit_gateway_id = "${module.tgw.tgw_id}"
   vpc_id             = "${module.vpc.vpc_id}"
