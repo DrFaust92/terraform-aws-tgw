@@ -66,3 +66,7 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "tgw-att-vpc-1" {
 | tgw\_route\_table\_id | The ID of the TGW route table |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+## License
+
+Apache 2 Licensed. See LICENSE for full details.
