@@ -40,8 +40,9 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "tgw-vpc-att" {
 ```
 
 ## External Accounts
-When Accounts are not in same Organization or RAM Sharing with AWS Organizations is disabled 
-`allow_external_principals = true` must be set and a sharer resource on the receiving account:
+When Accounts are not in the same Organization or RAM Sharing with AWS Organizations is disabled 
+`allow_external_principals = true` must be set and a sharer resource on the receiving account must be created
+
 
 ```hcl-terraform
 module "tgw" {
