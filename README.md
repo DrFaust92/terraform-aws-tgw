@@ -39,6 +39,29 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "tgw-vpc-att" {
 }
 ```
 
+## External Accounts
+When Accounts are not in same Organization or RAM Sharing with AWS Organizations is disabled 
+`allow_external_principals = true` must be set and a sharer resource on the receiving account:
+
+```hcl-terraform
+module "tgw" {
+  source = "..."
+
+  name                      = "my-tgw"
+  auto_accept_attachments   = true
+  allow_external_principals = true
+
+  tags = {
+    Terraform = "true"
+    Environment = "dev"
+  }
+}
+
+
+resource "aws_ram_resource_share_accepter" "receiver_accept" {
+  share_arn = "${module.tgw.ram_share_arn}"
+}
+```
 
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
@@ -65,8 +88,8 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "tgw-vpc-att" {
 
 | Name | Description |
 |------|-------------|
-| ram\_principal\_association | List of IDs of the RAM Principal Association |
-| ram\_resource\_association | The ID of the RAM Resource Association |
+| ram\_principal\_association\_ids | Map of Principal of to the RAM Principal Association ID |
+| ram\_resource\_association\_id | The ID of the RAM Resource Association |
 | ram\_share\_arn | The ARN of the RAM Share |
 | ram\_share\_id | The ID of the RAM Share |
 | tgw\_arn | The ARN of the TGW |

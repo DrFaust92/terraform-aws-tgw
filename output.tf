@@ -23,12 +23,12 @@ output "ram_share_arn" {
   value       = "${element(concat(aws_ram_resource_share.ram_share.arn, list("")), 0)}"
 }
 
-output "ram_resource_association" {
+output "ram_resource_association_id" {
   description = "The ID of the RAM Resource Association"
   value       = "${element(concat(aws_ram_resource_association.ram_resource_association.id, list("")), 0)}"
 }
 
-output "ram_principal_association" {
-  description = "List of IDs of the RAM Principal Association"
-  value       = ["${aws_ram_principal_association.ram_principal_association.*.id}"]
+output "ram_principal_association_ids" {
+  description = "Map of Principal of to the RAM Principal Association ID"
+  value       = "${zipmap(var.ram_share_principals,list(aws_ram_principal_association.ram_principal_association.*.id))}"
 }
