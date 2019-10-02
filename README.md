@@ -21,7 +21,7 @@ module "vpc" {
 }
 
 module "tgw" {
-  source = "..."
+  source  = "DrFaust92/tgw/aws"
 
   name                    = "my-tgw"
   auto_accept_attachments = true
